@@ -1,1 +1,21 @@
-M
+{% extends "capstone/layout.html" %}
+ {% load static %}
+{% block body %}
+
+<br>
+<h4 style="color:#006400; font-weight:bold">Bearing Capacity Calculations for Foundations</h4>
+<br>
+<p id="intro">This Website is used to Calculate the Bearing Capacity for Civil Engineering Structures on either Soil or Rock Foundations </p>
+<br>
+<p id="next">Please Select your Foundation type Below</p> 
+<br>
+<div class="row">
+
+<h5><button class="app-button"><a href="{% url 'soil_capacity' %}">Soil</a></button></h5>  
+
+<h5><button class="app-button"><a href="{% url 'rock_capacity' %}">Rock</a></button></h5>
+
+</div>
+<br>
+{% endblock %}
+
