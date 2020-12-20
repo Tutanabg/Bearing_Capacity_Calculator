@@ -1,1 +1,94 @@
+{% extends "capstone/layout.html" %}
+ {% load static %}
+{% block body %}
+<h2>Bearing Capacity on Soil Foundations</h2>
+<div id="capacity-view">
+        <h3>Input Parameters to Calculate Bearing Capacity</h3>
+        <form id="soil-capacity-form">
+            <div class="form-group">
+                Cohesion () in kpa: <input class="form-control" id="cohesion">
+            </div>
+            <div class="form-group">
+                Shearing Resistance () in degree: <input   class="form-control"   id="shearing" >
+            </div>
+            <div class="form-group">
+                Foundation Length () in m: <input class="form-control" id="length">
+            </div>
+            <div class="form-group">
+                Foundation Depth () in m: <input class="form-control" id="depth">
+            </div>
+            <div class="form-group">
+                Foundation Width () in m: <input class="form-control" id="width">
+            </div>
+            <div class="form-group">
+                Angle of Inclination () in degree: <input class="form-control" id="inclination">
+            </div>
+            <div class="form-group">
+                Average Unit Weight of Water () in KN/M3: <input class="form-control" id="uw_water">
+            </div>
+            <div class="form-group">
+                Ground Water Depth () in m: <input class="form-control" id="gw_depth">
+            </div>
+            <div class="form-group">
+                Average Dry Unit Weight of Soil () in KN/M3: <input class="form-control" id="duw_soil">
+            </div>
+            <div class="form-group">
+                Average Saturate Unit Weight of Soil () in KN/M3: <input class="form-control" id="suw_soil">
+            </div>
+            <div class="form-group">
+                Unit Weight Below Foundation () in KN/M3: <input class="form-control" id="uw_below_fnd">
+            </div>
+            <div class="form-group">
+                Factor of Safety (F): <input class="form-control" id="fos">
+            </div>
+            <input type="submit" class="btn btn-primary my-3" id="btnbtn"/>
+        </form>
+    </div>
+    
+{% if capacity %}
+
+
+<p>Bearing Capacity Calculations Results </p>
+ </div>                          
+
+<table style="width:100%">
+  <tr>
+    <th>Foundation Depth (m)</th>
+    <th>Foundation Width (m)</th>
+    <th>Ultimate Bearing Capacity (qu) (kPa)</th>
+    <th>Allowable Bearing Capacity (qall) (kPa)</th>
+    <th> Net Allowable Bearing Capacity (qall(net)) (kPa)</th>
+  </tr>
+  <tr>
+    <td id ="fdepth"></td>
+    <td id ="fwidth"></td>
+    <td id ="UlBrCa"></td>
+    <td id ="AlBrCa"></td>
+    <td id ="NtBrCa"></td>
+  </tr>
+</table>
+
+
+<div id="recommendation">
+<p>The allowable stress values obtained from bearing capacity calculation methods i.e., 
+
+the general bearing capacity equation calculation methods is <span class="number" id="aresult"></span>. To arrive at 
+
+this value, the available lowest values are taken. By becoming still more conservative 
+
+we can take <span class="number" id="bresult"></span> as the net allowable bearing capacity value for isolated footing 
+
+foundations to be founded at <span class="number" id="cresult"></span> depth below the natural-ground at the 
+
+existing surface level.</p>
+</div>
+
+{% endif %}
+<a href="{% url 'index' %}">Back to Home Page</a>
+{% endblock %}
+
+{% block script %} 
+  <script src="{% static 'capstone/capacity.js' %}"></script>
+{% endblock %}
+
 
